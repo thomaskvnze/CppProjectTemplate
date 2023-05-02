@@ -90,24 +90,6 @@ function(add_linter_tool_to_target target)
         REGEX
         ".*.(cc|h|cpp|hpp)")
 
-    if(ENABLE_CPPCHECK)
-        find_program(CPPCHECK cppcheck)
-        if(CPPCHECK)
-            message("==> Added Cppcheck for Target: ${target}")
-            add_custom_target(
-                ${target}_cppcheck
-                COMMAND
-                    ${CPPCHECK} ${TARGET_SOURCES} --enable=all
-                    --suppress=unusedFunction --suppress=unmatchedSuppression
-                    --suppress=missingIncludeSystem --suppress=toomanyconfigs
-                    --project=${CMAKE_BINARY_DIR}/compile_commands.json
-                    -i${CMAKE_BINARY_DIR}/ -i${CMAKE_SOURCE_DIR}/external/
-                USES_TERMINAL)
-        else()
-            message("==> CPPCHECK NOT FOUND")
-        endif()
-    endif()
-
     find_package(Python3 COMPONENTS Interpreter)
     if(NOT ${Python_FOUND})
         message("==> Python3 needed for IWYU and Clang-Tidy")
