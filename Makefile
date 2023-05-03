@@ -1,7 +1,7 @@
 all: prepare
 
 install_min:
-	sudo apt-get install gcc g++ cmake make doxygen
+	sudo apt-get install gcc g++ cmake doxygen
 
 install_tests: install_min
 	sudo apt-get install gcovr lcov
@@ -15,7 +15,3 @@ install_pip:
 install_doc: install_min
 	sudo apt-get install doxygen
 	pip install jinja2 Pygments
-
-prepare:
-	rm -rf build
-	mkdir build
