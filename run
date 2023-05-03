@@ -25,7 +25,7 @@ task_install() {
     brew install cmake clang-format gcovr lcov doxygen llvm
     pip install cmakelang
     cd external/vcpkg && git clone https://github.com/Microsoft/vcpkg.git && cd ../..
-    echo "Add 'alias clang-tidy=\"/opt/homebrew/Cellar/llvm/<version>/bin/clang-tidy\"' to ~/.zshrc"
+    echo "Add symlink for clang-tidy 'sudo ln -s \"/opt/homebrew/Cellar/llvm/16.0.2/bin/clang-tidy\" \"/usr/local/bin/clang-tidy\"'"
   fi
 }
 
